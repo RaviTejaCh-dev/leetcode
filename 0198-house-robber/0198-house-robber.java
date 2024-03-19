@@ -3,13 +3,11 @@ class Solution {
         int n = nums.length;
         int rob = 0;
         int noRob = 0;
-
-        for(int i = 0; i<n; i++){
-            int newRob = noRob + nums[i];
-            int noNewRob = Math.max(noRob, rob);
-            rob = newRob;
-            noRob = noNewRob;
+        for(int i = 0; i< n; i++){
+            int newRob = Math.max(rob + nums[i], noRob);
+            rob = noRob;
+            noRob = newRob;
         }
-        return Math.max(rob,noRob);   
+        return noRob;
     }
 }
